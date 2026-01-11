@@ -206,7 +206,9 @@ shieldCmd
     .description('Enable the shield mode')
     .option('-p, --password <password>', 'Password to disable shield mode')
     .option('-t, --timeout <timeout>', 'Timeout for shield mode (e.g., 30m, 1h, 2d)')
-    .action(async ({ password = null, timeout = DEFAULT_TIMEOUT }) => {
+    .action(async (options) => {
+        const timeout = options.timeout || DEFAULT_TIMEOUT;
+
         if (config.shield.enable) {
             console.log('Shield mode is already enabled.');
             return;
@@ -215,6 +217,33 @@ shieldCmd
         if (!isValidTimeout(timeout)) {
             console.error('Invalid timeout format. Use "30m", "1h", "2d", etc.');
             return;
+        }
+
+        // Prompt for password if not provided via -p flag
+        let password = options.password;
+        if (!password) {
+            const prompt = new Password({
+                name: 'password',
+                message: 'Create a password to disable shield mode:',
+                mask: '*',
+                symbols: { prefix: '' },
+                separator: () => '',
+            });
+
+            prompt.on('keypress', (_char, key) => {
+                if (key.ctrl && key.name === 'u') {
+                    prompt.input = '';
+                    prompt.cursor = 0;
+                    prompt.render();
+                }
+            });
+
+            password = await prompt.run();
+
+            if (!password) {
+                console.log('Password is required to enable shield mode.');
+                return;
+            }
         }
 
         const { confirm } = await Prompt({
