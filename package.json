@@ -1,11 +1,11 @@
 {
-  "name": "ulysse",
-  "author": "johackim",
-  "description": "A simple CLI tool for blocking your distracting apps and websites",
-  "homepage": "https://github.com/getulysse/ulysse",
+  "name": "ulysse-fixed",
+  "author": "AkiraTheSquid",
+  "description": "A simple CLI tool for blocking your distracting apps and websites (fork with password fix)",
+  "homepage": "https://github.com/AkiraTheSquid/ulysse_fixed_password",
   "license": "GPL-3.0",
   "main": "dist/index.js",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "engines": {
     "node": ">=14.0.0"
   },
@@ -17,10 +17,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/getulysse/ulysse.git"
+    "url": "git+https://github.com/AkiraTheSquid/ulysse_fixed_password.git"
   },
   "bugs": {
-    "url": "https://github.com/getulysse/ulysse/issues"
+    "url": "https://github.com/AkiraTheSquid/ulysse_fixed_password/issues"
   },
   "keywords": [
     "cli",

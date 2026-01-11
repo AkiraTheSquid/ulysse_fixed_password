@@ -42,7 +42,7 @@ The original version had a bug where `ulysse shield enable` would not prompt the
 ## Installation
 
 ```bash
-npm i -g github:AkiraTheSquid/ulysse_fixed_password
+npm i -g ulysse-fixed
 ```
 
 ## 📖 Usage
